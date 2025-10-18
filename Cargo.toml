@@ -1,0 +1,35 @@
+[package]
+name = "hasse"
+version = "0.1.0"
+edition = "2024"
+license = "Unlicense"
+rust-version = "1.90"
+documentation = "https://docs.rs/hasse"
+
+[dependencies]
+fltk = "1.4"
+anyhow = "1.0"
+thiserror = "1.0"
+
+[lib]
+name = "hasse"
+path = "src/lib.rs"
+
+[[bin]]
+name = "hasse"
+path = "src/main.rs"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+
+[profile.dev]
+opt-level = 0
+debug = true
+
+[package.metadata.docs.rs]
+# Build documentation with all features on docs.rs
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
