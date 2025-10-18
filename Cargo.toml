@@ -5,6 +5,7 @@ edition = "2024"
 license = "Unlicense"
 rust-version = "1.90"
 documentation = "https://docs.rs/hasse"
+description = "Hasse: utilities for working with partially ordered sets (posets) and Hasse diagrams."
 
 [dependencies]
 fltk = "1.4"
