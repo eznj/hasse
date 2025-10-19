@@ -4,6 +4,7 @@ use std::collections::VecDeque;
 pub struct Graph {
     pub adj: Vec<Vec<usize>>,
     pub directed: bool,
+    vertex_labels: Vec<String>,
 }
 
 impl Graph {
@@ -11,7 +12,26 @@ impl Graph {
         Self {
             adj: vec![Vec::new(); n],
             directed,
+            vertex_labels: (0..n).map(|i| i.to_string()).collect(),
         }
+    }
+    
+    #[allow(dead_code)]
+    pub fn is_directed(&self) -> bool {
+        self.directed
+    }
+
+    #[allow(dead_code)]
+    pub fn set_labels(&mut self, labels: Vec<String>) {
+        self.vertex_labels = labels;
+    }
+
+    /// Get the label for a vertex (used by GUI)
+    pub fn get_label(&self, index: usize) -> &str {
+        self.vertex_labels
+            .get(index)
+            .map(|s| s.as_str())
+            .unwrap_or("")
     }
 
     pub fn add_edge(&mut self, u: usize, v: usize) {
