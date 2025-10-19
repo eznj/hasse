@@ -152,7 +152,7 @@ fn draw_graph(graph: &Graph, positions: &[(f64, f64)]) {
         // Draw label
         draw::set_draw_color(Color::White);
         draw::set_font(fltk::enums::Font::HelveticaBold, 14);
-        let label = i.to_string();
+        let label = graph.get_label(i);
         let (w, h) = draw::measure(&label, true);
         draw::draw_text2(
             &label,

@@ -47,6 +47,41 @@ This tool implements **transitive reduction** to create Hasse diagrams:
 
 **Complexity**: O(V·E) where V is vertices and E is edges.
 
+## Examples
+
+### `graph` usage
+```rust
+use hasse::graph;
+use std::error::Error;
+
+fn main() -> Result<(), Box<dyn Error>> {
+    graph()
+        .vertices(5)
+        .directed(true)
+        .edge(0, 1)
+        .edge(1, 2)
+        .edge(2, 4)
+        .edge(2, 3)
+        .show()?;
+    Ok(())
+}
+```
+
+### `graph_with` usage
+```rust
+use hasse::graph_with;
+use std::error::Error;
+
+fn main() -> Result<(), Box<dyn Error>> {
+    graph_with::<&str>()
+        .directed(false)
+        .edge("Alice", "Bob")
+        .edge("Bob", "Charlie")
+        .show()?;
+    Ok(())
+}
+```
+
 ## Build and Run
 
 ### Prereqs
